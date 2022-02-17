@@ -34,7 +34,7 @@ const scene = new THREE.Scene()
 
 // Texture
 const textureLoader = new THREE.TextureLoader()
-const gradientTexture = textureLoader.load('textures/gradients/3.jpg')
+const gradientTexture = textureLoader.load('textures/gradients/5.jpg')
 gradientTexture.magFilter = THREE.NearestFilter
 
 // Material
@@ -62,7 +62,7 @@ const mesh4 = new THREE.Mesh(
     material
 )
 const mesh5 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 0.1, 1),
+    new THREE.DodecahedronGeometry(1),
     material
 )
 
@@ -74,14 +74,16 @@ mesh3.position.y = -objectsDistance * 2
 mesh4.position.y = -objectsDistance * 3
 mesh5.position.y = -objectsDistance * 4
 
-const objectsOffset = 2
+let objectsOffset = 1.75
 mesh1.position.x = objectsOffset
 mesh2.position.x = -objectsOffset
 mesh3.position.x = objectsOffset
 mesh4.position.x = -objectsOffset
 mesh5.position.x = objectsOffset
 
-scene.add(mesh1, mesh2, mesh3, mesh4, mesh5)
+const objectsGroup = new THREE.Group()
+objectsGroup.add(mesh1, mesh2, mesh3, mesh4, mesh5)
+scene.add(objectsGroup)
 
 /**
  * Particles
@@ -210,6 +212,7 @@ window.addEventListener('mousemove', (event) =>
  */
 const clock = new THREE.Clock()
 let previousTime = 0
+let previousScalePortrait = false
 
 const tick = () =>
 {
@@ -217,6 +220,35 @@ const tick = () =>
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
     
+    
+    if (sizes.height > sizes.width) {
+        if (previousScalePortrait === false) {
+            previousScalePortrait = true
+            sectionMeshes.forEach( (mesh) => {
+                mesh.scale.set(0.6, 0.6, 0.6)
+            })
+            let objectsOffset = 0.9
+            mesh1.position.x = objectsOffset
+            mesh2.position.x = -objectsOffset
+            mesh3.position.x = objectsOffset
+            mesh4.position.x = -objectsOffset
+            mesh5.position.x = objectsOffset
+        }
+    } else {
+        if (previousScalePortrait === true) {
+            previousScalePortrait = false
+            sectionMeshes.forEach( (mesh) => {
+                mesh.scale.set(1, 1, 1)
+            })
+            let objectsOffset = 1.75
+            mesh1.position.x = objectsOffset
+            mesh2.position.x = -objectsOffset
+            mesh3.position.x = objectsOffset
+            mesh4.position.x = -objectsOffset
+            mesh5.position.x = objectsOffset
+        }
+    }
+
     // Animate camera based on the scroll
     camera.position.y = -scrollY / sizes.height * objectsDistance
 
