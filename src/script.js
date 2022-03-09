@@ -86,6 +86,14 @@ objectsGroup.add(mesh1, mesh2, mesh3, mesh4, mesh5)
 scene.add(objectsGroup)
 
 /**
+ * Raycaster
+ */
+const raycaster = new THREE.Raycaster()
+
+
+
+
+/**
  * Particles
  */
 // Geometry
@@ -195,17 +203,24 @@ window.addEventListener('scroll', () =>
 })
 
 /**
- * Cursor
+ * Cursor / Mouse
  */
 const cursor = {}
 cursor.x = 0
 cursor.y = 0
 
+const mouse = new THREE.Vector2()
+
 window.addEventListener('mousemove', (event) => 
 {
     cursor.x = event.clientX / sizes.width - 0.5
     cursor.y = event.clientY / sizes.height - 0.5
+
+    mouse.x = cursor.x * 2
+    mouse.y = - cursor.x * 2
 })
+
+
 
 /**
  * Animate
@@ -219,7 +234,6 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
-    
     
     if (sizes.height > sizes.width) {
         if (previousScalePortrait === false) {
@@ -263,6 +277,12 @@ const tick = () =>
         mesh.rotation.x += deltaTime * 0.1
         mesh.rotation.y += deltaTime * 0.12
     }
+
+    // Raycasting
+
+    raycaster.setFromCamera(mouse, camera)
+    const intersect = raycaster.intersectObject(sectionMeshes)
+    intersect.object.material.color.set('#0000ff')
 
     // Render
     renderer.render(scene, camera)
