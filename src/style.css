@@ -44,3 +44,12 @@ section:nth-child(odd)
 p {
     font-size: smaller;
 }
+
+a {
+    color: #ffeded;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
