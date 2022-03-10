@@ -9,15 +9,16 @@ import gsap from 'gsap'
 const gui = new dat.GUI()
 
 const parameters = {
-    materialColor: '#ffeded'
+    meshColor: '#FF8A72',
+    particleColor: '#FF8A72'
 }
 
-gui
-    .addColor(parameters, 'materialColor')
-    .onChange(() => {
-        material.color.set(parameters.materialColor)
-        particles.color.set(parameters.materialColor)
-    })
+// gui
+//     .addColor(parameters, 'materialColor')
+//     .onChange(() => {
+//         material.color.set(parameters.materialColor)
+//         particles.color.set(parameters.materialColor)
+//     })
 
 /**
  * Base
@@ -39,7 +40,7 @@ gradientTexture.magFilter = THREE.NearestFilter
 
 // Material
 const material = new THREE.MeshToonMaterial({
-    color: parameters.materialColor,
+    color: parameters.meshColor,
     gradientMap: gradientTexture
 })
 
@@ -50,19 +51,19 @@ const mesh1 = new THREE.Mesh(
     material
 )
 const mesh2 = new THREE.Mesh(
-    new THREE.TorusGeometry(0.5, 0.2, 8, 30),
+    new THREE.DodecahedronGeometry(1),
     material
 )
 const mesh3 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1.6, 0.1),
-    material
-)
-const mesh4 = new THREE.Mesh(
     new THREE.ConeGeometry(0.8, 1.6, 32),
     material
 )
+const mesh4 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1.6, 0.1),
+    material
+)
 const mesh5 = new THREE.Mesh(
-    new THREE.DodecahedronGeometry(1),
+    new THREE.TorusGeometry(0.5, 0.2, 8, 30),
     material
 )
 
@@ -97,7 +98,7 @@ const raycaster = new THREE.Raycaster()
  * Particles
  */
 // Geometry
-const particlesCount = 200
+const particlesCount = 400
 const positions = new Float32Array(particlesCount*3)
 
 for(let i = 0; i < particlesCount; i++) {
@@ -111,9 +112,9 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
-    color: parameters.materialColor,
+    color: parameters.particleColor,
     sizeAttenuation: true,
-    size: 0.03
+    size: 0.05
 })
 
 // Points
@@ -209,7 +210,7 @@ const cursor = {}
 cursor.x = 0
 cursor.y = 0
 
-const mouse = new THREE.Vector2()
+// const mouse = new THREE.Vector2()
 
 window.addEventListener('mousemove', (event) => 
 {
@@ -278,11 +279,11 @@ const tick = () =>
         mesh.rotation.y += deltaTime * 0.12
     }
 
-    // Raycasting
+    // // Raycasting
 
-    raycaster.setFromCamera(mouse, camera)
-    const intersect = raycaster.intersectObject(sectionMeshes)
-    intersect.object.material.color.set('#0000ff')
+    // raycaster.setFromCamera(mouse, camera)
+    // const intersect = raycaster.intersectObject(sectionMeshes)
+    // intersect.object.material.color.set('#0000ff')
 
     // Render
     renderer.render(scene, camera)
