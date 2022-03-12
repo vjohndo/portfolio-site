@@ -6,9 +6,9 @@
 
 html 
 {
-    background: #0E2A43
+    background: rgb(12,35,56);
+    background: linear-gradient(180deg, rgb(8, 23, 36) 0%, rgba(10,42,67,1) 9%, rgb(29, 63, 93) 100%);
 }
-
 .webgl
 {
     position: fixed;
@@ -22,6 +22,20 @@ h5
     display: block;
 }
 
+h2 {
+    display: block;
+}
+
+.links{
+    display: block;
+    margin-top: 1%;
+    font-size: 35%;
+}
+
+.links a {
+    font-style: italic;
+}
+
 .section
 {
     display: flex;
@@ -29,8 +43,8 @@ h5
     height: 100vh;
     position: relative;
     font-family: 'Cabin', sans-serif;
-    color: #ffeded;
-    text-transform: uppercase;
+    color: #EDEDED;
+    text-transform: none;
     font-size: 7vmin;
     padding-left: 10%;
     padding-right: 10%;
@@ -42,14 +56,58 @@ section:nth-child(odd)
 }
 
 p {
-    font-size: smaller;
+    margin-top: 3%;
+    font-size: 25%;
+    text-align: justify;
+    width: 55%;
+    text-transform: none;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex: 1 1 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 55%;
+    font-size: 60%;
+    font-style: italic;
+    align-items: center;
 }
 
 a {
-    color: #ffeded;
+    color: #00e5ff;
     text-decoration: none;
+    text-transform: none;
+}
+
+li:last-child {
+    padding-right: 0px;
+    border-right: none;
 }
 
 a:hover {
     cursor: pointer;
+    text-shadow: 2px 2px gray;
+}
+
+.description {
+    text-align: left;
+}
+
+.odd {
+    width: 40vw;
+}
+
+.odd p {
+    width: 100%;
+}
+
+span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+h2 a {
+    color: white;
 }
