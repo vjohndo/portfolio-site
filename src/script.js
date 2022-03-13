@@ -187,7 +187,7 @@ window.addEventListener('scroll', () =>
     scrollY = window.scrollY
     let newSection = Math.round(scrollY / sizes.height)
     if (sizes.height > sizes.width) {
-        newSection = Math.round(newSection * 0.775)
+        newSection = Math.round(newSection / 0.775)
     }
     
     if (newSection != currentSection) 
