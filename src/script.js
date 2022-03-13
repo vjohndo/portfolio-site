@@ -185,8 +185,11 @@ let currentSection = 0
 window.addEventListener('scroll', () => 
 {
     scrollY = window.scrollY
-    const newSection = Math.round(scrollY / sizes.height)
-    console.log(currentSection)
+    let newSection = Math.round(scrollY / sizes.height)
+    if (sizes.height > sizes.width) {
+        newSection = Math.round(newSection * 0.775)
+    }
+    
     if (newSection != currentSection) 
     {
         currentSection = newSection
@@ -277,17 +280,15 @@ const tick = () =>
             mesh4.position.y = -objectsDistance * 3
             mesh5.position.y = -objectsDistance * 4
         }
-
-        // Animate camera based on the scroll
-        camera.position.y = -scrollY / sizes.height * objectsDistance
-
-        const parrallaxX = cursor.x * 0.5
-        const parrallaxY = - cursor.y * 0.5
-        cameraGroup.position.x += (parrallaxX - cameraGroup.position.x) * 2 * deltaTime
-        cameraGroup.position.y += (parrallaxY - cameraGroup.position.y) * 2 * deltaTime
     }
 
-   
+    // Animate camera based on the scroll
+    camera.position.y = -scrollY / sizes.height * objectsDistance
+
+    const parrallaxX = cursor.x * 0.5
+    const parrallaxY = - cursor.y * 0.5
+    cameraGroup.position.x += (parrallaxX - cameraGroup.position.x) * 2 * deltaTime
+    cameraGroup.position.y += (parrallaxY - cameraGroup.position.y) * 2 * deltaTime
 
     // Animate meshes
     for (const mesh of sectionMeshes) 
