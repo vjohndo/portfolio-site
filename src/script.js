@@ -257,6 +257,7 @@ const tick = () =>
             mesh5.position.y = -objectsDistance * 4
         }
     } else {
+
         if (previousScalePortrait === true) {
             previousScalePortrait = false
             sectionMeshes.forEach( (mesh) => {
@@ -276,15 +277,17 @@ const tick = () =>
             mesh4.position.y = -objectsDistance * 3
             mesh5.position.y = -objectsDistance * 4
         }
+
+        // Animate camera based on the scroll
+        camera.position.y = -scrollY / sizes.height * objectsDistance
+
+        const parrallaxX = cursor.x * 0.5
+        const parrallaxY = - cursor.y * 0.5
+        cameraGroup.position.x += (parrallaxX - cameraGroup.position.x) * 2 * deltaTime
+        cameraGroup.position.y += (parrallaxY - cameraGroup.position.y) * 2 * deltaTime
     }
 
-    // Animate camera based on the scroll
-    camera.position.y = -scrollY / sizes.height * objectsDistance
-
-    const parrallaxX = cursor.x * 0.5
-    const parrallaxY = - cursor.y * 0.5
-    cameraGroup.position.x += (parrallaxX - cameraGroup.position.x) * 2 * deltaTime
-    cameraGroup.position.y += (parrallaxY - cameraGroup.position.y) * 2 * deltaTime
+   
 
     // Animate meshes
     for (const mesh of sectionMeshes) 
