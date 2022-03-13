@@ -240,14 +240,21 @@ const tick = () =>
         if (previousScalePortrait === false) {
             previousScalePortrait = true
             sectionMeshes.forEach( (mesh) => {
-                mesh.scale.set(0.6, 0.6, 0.6)
+                mesh.scale.set(0.5, 0.5, 0.5)
             })
-            let objectsOffset = 0.9
+            let objectsOffset = 1.5 * (sizes.width/sizes.height)
             mesh1.position.x = objectsOffset
-            mesh2.position.x = -objectsOffset
+            mesh2.position.x = -objectsOffset*0.8
             mesh3.position.x = objectsOffset
-            mesh4.position.x = -objectsOffset
-            mesh5.position.x = objectsOffset
+            mesh4.position.x = -objectsOffset*0.6
+            mesh5.position.x = objectsOffset*0.8
+
+            let objectsDistance = 4*0.775
+            mesh1.position.y = -objectsDistance * 0 + 0.5 
+            mesh2.position.y = -objectsDistance * 1 + 0.2
+            mesh3.position.y = -objectsDistance * 2
+            mesh4.position.y = -objectsDistance * 3
+            mesh5.position.y = -objectsDistance * 4
         }
     } else {
         if (previousScalePortrait === true) {
@@ -261,6 +268,13 @@ const tick = () =>
             mesh3.position.x = objectsOffset
             mesh4.position.x = -objectsOffset
             mesh5.position.x = objectsOffset
+
+            let objectsDistance = 4
+            mesh1.position.y = -objectsDistance * 0
+            mesh2.position.y = -objectsDistance * 1
+            mesh3.position.y = -objectsDistance * 2
+            mesh4.position.y = -objectsDistance * 3
+            mesh5.position.y = -objectsDistance * 4
         }
     }
 

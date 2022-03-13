@@ -1,66 +1,66 @@
-*
-{
+/* Web GL CSS */
+
+* {
     margin: 0;
     padding: 0;
 }
 
-html 
-{
+html {
     background: rgb(12,35,56);
     background: linear-gradient(180deg, rgb(8, 23, 36) 0%, rgba(10,42,67,1) 9%, rgb(29, 63, 93) 100%);
 }
-.webgl
-{
+
+.webgl {
     position: fixed;
     top: 0;
     left: 0;
     outline: none;
 }
 
-h5
-{
-    display: block;
+/* Sections */
+.odd {
+    width: 40vw;
 }
 
-h2 {
-    display: block;
+.odd p {
+    width: 110%;
 }
 
-.links{
-    display: block;
-    margin-top: 1%;
-    font-size: 35%;
-}
-
-.links a {
-    font-style: italic;
-}
-
-.section
-{
+.section {
     display: flex;
     align-items: center;
     height: 100vh;
     position: relative;
     font-family: 'Cabin', sans-serif;
     color: #EDEDED;
-    text-transform: none;
     font-size: 7vmin;
     padding-left: 10%;
     padding-right: 10%;
 }
 
-section:nth-child(odd)
-{
+section:nth-child(odd) {
     justify-content: flex-end;
+    padding-right: 10%;
 }
+
+/*  Paragraph CSS */
+
+div {
+    max-width: 40vw;
+}
+
+h1, h2, h5 {
+    display: block;
+    width: fit-content;
+    font-size: 8vmin;
+}
+
 
 p {
     margin-top: 3%;
-    font-size: 25%;
-    text-align: justify;
-    width: 55%;
+    font-size: 2vmin;
     text-transform: none;
+    text-align: justify;
 }
 
 ul {
@@ -69,10 +69,25 @@ ul {
     flex: 1 1 1;
     flex-direction: column;
     justify-content: space-between;
-    width: 55%;
+    width: 40vh;
     font-size: 60%;
     font-style: italic;
     align-items: center;
+}
+
+span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.description {
+    text-align: left;
+}
+
+/* Anchor Tags */
+
+h2 a {
+    color: white;
 }
 
 a {
@@ -81,33 +96,46 @@ a {
     text-transform: none;
 }
 
-li:last-child {
-    padding-right: 0px;
-    border-right: none;
-}
-
 a:hover {
     cursor: pointer;
     text-shadow: 2px 2px gray;
 }
 
-.description {
-    text-align: left;
+.links {
+    display: block;
+    margin-top: 1%;
+    font-size: 3vmin;
 }
 
-.odd {
-    width: 40vw;
-}
-
-.odd p {
-    width: 100%;
-}
-
-span {
-    font-weight: bold;
+.links a {
     font-style: italic;
 }
 
-h2 a {
-    color: white;
+@media (orientation: portrait) {
+    .section {
+        height: 80vh;
+    }
+    h1 h2 {
+        font-size: 10vh !important;
+    }
+    p {
+        font-size: 1.8vh;
+        text-align: left;
+    }
+    div {
+        max-width: 60vw;
+    }
+    .odd p {
+        width: 120%;
+    }
+    .links {
+        font-size: 2.5vh;
+    }
+
 }
+
+
+
+
+
+
