@@ -185,10 +185,10 @@ let currentSection = 0
 window.addEventListener('scroll', () => 
 {
     scrollY = window.scrollY
-    let newSection = Math.round(scrollY / sizes.height)
-    if (sizes.height > sizes.width) {
-        newSection = Math.round(newSection / 0.775)
-    }
+    let newSection = Math.round((scrollY)/ (sizes.height*0.8))
+    console.log(scrollY);
+
+    console.log('current section', currentSection, 'newSection', newSection, 'height', sizes.height, 'scroll', scrollY)
     
     if (newSection != currentSection) 
     {
@@ -220,8 +220,8 @@ window.addEventListener('mousemove', (event) =>
     cursor.x = event.clientX / sizes.width - 0.5
     cursor.y = event.clientY / sizes.height - 0.5
 
-    mouse.x = cursor.x * 2
-    mouse.y = - cursor.x * 2
+    // mouse.x = cursor.x * 2
+    // mouse.y = - cursor.x * 2
 })
 
 
