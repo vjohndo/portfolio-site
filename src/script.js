@@ -51,11 +51,11 @@ const mesh1 = new THREE.Mesh(
     material
 )
 const mesh2 = new THREE.Mesh(
-    new THREE.DodecahedronGeometry(1),
+    new THREE.ConeGeometry(0.8, 1.6, 32),
     material
 )
 const mesh3 = new THREE.Mesh(
-    new THREE.ConeGeometry(0.8, 1.6, 32),
+    new THREE.DodecahedronGeometry(1),
     material
 )
 const mesh4 = new THREE.Mesh(
