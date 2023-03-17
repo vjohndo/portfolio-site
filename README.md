@@ -1,6 +1,6 @@
 # 3D Portfolio Website
 
-This project portfolio website was built using Three.js and served using webpack. It translates the camera against scrollwheel, 3D object rotate based on the the viewport and background particles moved based on the mouse cursor.
+This project portfolio website was built using Three.js and served using webpack. The camera against scrollwheel, objects rotate based on the the viewport and background particles moved based on the mouse cursor.
 
 >Landing page
 
