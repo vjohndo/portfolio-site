@@ -29,4 +29,4 @@ This project portfolio website was built using Three.js and served using webpack
 - Webpack
 
 ## References 
-- [https://threejs-journey.com/](https://threejs-journey.com/)
+- Referenced [https://threejs-journey.com/](https://threejs-journey.com/) to build this site
